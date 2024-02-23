@@ -1,0 +1,16 @@
+VAR vMaiorValorMensal =
+MAXX( ALLSELECTED(dCalendario[Ano], dCalendario[Mês Abrev.], dCalendario[Mês]), [Total Vendido] )
+VAR vMaiorValorDiario =
+MAXX( ALLSELECTED(dCalendario), [Total Vendido] )
+VAR vMenorValorMensal =
+MINX( ALLSELECTED(dCalendario[Ano], dCalendario[Mês Abrev.], dCalendario[Mês]), [Total Vendido] )
+VAR vMenorValorDiario =
+MINX( ALLSELECTED(dCalendario), [Total Vendido] )
+RETURN
+SWITCH(
+    TRUE(),
+    ISINSCOPE(dCalendario[Dia]) && [Total Vendido] = vMaiorValorDiario, "cyan",
+    NOT(ISINSCOPE(dCalendario[Dia])) && [Total Vendido] = vMaiorValorMensal, "cyan",
+    ISINSCOPE(dCalendario[Dia]) && [Total Vendido] = vMenorValorDiario, "red",
+    NOT(ISINSCOPE(dCalendario[Dia])) && [Total Vendido] = vMenorValorMensal, "red"
+)
