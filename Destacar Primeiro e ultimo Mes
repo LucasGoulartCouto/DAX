@@ -1,0 +1,17 @@
+VAR vPrimeiroMes = CALCULATE( MIN(dCalendario[Contador MesAno]), ALLSELECTED(dCalendario) )
+VAR vUltimoMes = 
+CALCULATE( 
+    MAX(dCalendario[Contador MesAno]), 
+    FILTER(
+        ALLSELECTED(dCalendario),
+        NOT(ISBLANK([Total Vendido]))
+    )
+)
+VAR vTotalPrimeiroMes = CALCULATE([Total Vendido], dCalendario[Contador MesAno] = vPrimeiroMes)
+VAR vTotalUltimoMes = CALCULATE([Total Vendido], dCalendario[Contador MesAno] = vUltimoMes)
+RETURN
+SWITCH(
+    TRUE(),
+    MAX(dCalendario[Contador MesAno]) = vPrimeiroMes, vTotalPrimeiroMes,
+    MAX(dCalendario[Contador MesAno]) = vUltimoMes, vTotalUltimoMes
+)
