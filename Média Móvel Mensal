@@ -1,0 +1,13 @@
+VAR vDataContexto = MAX(dCalendario[Data])
+VAR vTotalMovel = 
+CALCULATE(
+    [Total Vendido] / DISTINCTCOUNT(dCalendario[AnoMes]),
+    DATESINPERIOD(
+        dCalendario[Data],
+        vDataContexto,
+        -3,
+        MONTH
+    )
+)
+RETURN
+vTotalMovel
