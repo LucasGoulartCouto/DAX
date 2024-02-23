@@ -1,0 +1,11 @@
+VAR vTopN = 
+TOPN(
+    [TOPN Valor],
+    ALL(dProduto[Produto]),
+    [Total Vendido]
+)
+RETURN
+CALCULATE(
+    [Total Vendido],
+    KEEPFILTERS(vTopN)
+)
