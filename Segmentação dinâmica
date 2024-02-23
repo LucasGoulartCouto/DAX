@@ -1,0 +1,8 @@
+CALCULATE(
+    [SKUs Vendidos],
+    FILTER(
+        dProduto,
+        [Total Vendido] >= MIN(SegmentoProduto[LimInf]) &&
+        [Total Vendido] < MAX(SegmentoProduto[LimSup])
+    )
+)
