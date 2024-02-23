@@ -1,0 +1,6 @@
+SWITCH(
+    SELECTEDVALUE(SelecaoDestaque[id]),
+    1, [Destacar Maior e Menor Valor],
+    2, [Destacar Primeiro e Último Mes v2],
+    3, [Destacar Valores Acima da Média]
+)
