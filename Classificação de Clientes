@@ -1,0 +1,10 @@
+SWITCH(
+    TRUE(),
+    [Total Vendido] >= 1000000 && [% Margem] >= 0.5, "Platinum",
+    [Total Vendido] >= 1000000 && [% Margem] < 0.5, "Premium",
+    [Total Vendido] >= 500000 && [% Margem] >= 0.5, "Gold",
+    [Total Vendido] >= 500000 && [% Margem] < 0.5, "Silver",
+    [Total Vendido] > 0, "Bronze",
+    [Total Vendido] = 0, "New",
+    "ERRO DE CONFIGURAÇÃO"
+)
