@@ -1,0 +1,6 @@
+CALCULATE(
+    [Linhas Vendas],
+    dCalendario[Ano] = 2017,
+    dCalendario[Mês] IN {4,5},
+    dCliente[Idade] > 50 || dCliente[Ocupação] = "Bachelor"
+)
