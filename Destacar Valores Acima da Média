@@ -1,0 +1,10 @@
+VAR vMediaMensal =
+AVERAGEX( ALLSELECTED(dCalendario[Ano], dCalendario[Mês Abrev.], dCalendario[Mês]), [Total Vendido] )
+VAR vMediaDiario =
+AVERAGEX( ALLSELECTED(dCalendario), [Total Vendido] )
+RETURN
+SWITCH(
+    TRUE(),
+    ISINSCOPE(dCalendario[Dia]) && [Total Vendido] >= vMediaDiario, "blue",
+    NOT(ISINSCOPE(dCalendario[Dia])) && [Total Vendido] >= vMediaMensal, "red"
+)
