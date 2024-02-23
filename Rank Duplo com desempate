@@ -1,0 +1,7 @@
+RANKX(
+    CROSSJOIN(
+        ALL(dProduto[Categoria]),
+        ALL(dCliente[Continente])
+    ),
+    [SKUs Vendidos]*100000000 + [Total Vendido]/1000 ,,,Dense
+)
